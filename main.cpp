@@ -7,11 +7,14 @@ using namespace std;
 
 int main()
 {
-	int morphology();
+	//int morphology();
 	ifstream file_in("target.txt");
 	ofstream file_out("4e.txt");
-	vector<int> trans;
-	morphology();
+	//vector<int> trans;
+	//morphology();
+	int x;
+	file_in >> x;
+	file_out << x;
 	system("pause");
 
 	return 0;
