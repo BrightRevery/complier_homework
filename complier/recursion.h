@@ -1,4 +1,6 @@
 #pragma once
+enum token;
+
 class recursion
 {
 public:
