@@ -1,3 +1,4 @@
+#pragma once
 class recursion
 {
 public:
@@ -30,4 +31,6 @@ public:
 	int static call();
 	int static args();
 	int static arg_list();
+
+	token t;
 };
