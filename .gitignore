@@ -46,6 +46,6 @@
 *.vcxproj
 *.filters
 *.ipch
-*.suo
-*.db
 *.opendb
+.suo
+Browse.VC.db
