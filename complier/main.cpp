@@ -13,8 +13,7 @@ int main()
 	//vector<int> trans;
 	//morphology();
 	int x;
-	file_in >> x;
-	file_out << x;
+	cout << "h,w!";
 	system("pause");
 
 	return 0;

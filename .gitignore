@@ -47,5 +47,6 @@
 *.filters
 *.ipch
 *.opendb
+*.opensdf
 .suo
 Browse.VC.db
