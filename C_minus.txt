@@ -14,7 +14,7 @@ C-Minus 的 BNF 语法如下：
 1. program -> declaration_list
 2. declaration_list ->  declaration declaration_list |  empty
 3. declaration -> type_specifier ID var_declaration_end  | type_specifier ID fun_declaration //非标准但可以判断
-4. var_declaration_end ->  empty
+4. var_declaration_end ->  ;
 5. type_specifier -> INT  |  VOID
 6. fun_declaration_end ->  ( params )  compound_stmt
 7. params -> param_list  |  VOID
@@ -27,8 +27,8 @@ C-Minus 的 BNF 语法如下：
 14. expression_stmt -> expression ;  |  ;
 15. selection_stmt -> IF ( expression ) statement  |  IF ( expression ) statement ELSE statement //非标准但可以判断
 16. iteration_stmt -> WHILE ( expression ) statement
-17. return_stmt -> RETURN  |  RETURN expression 
-18. expression -> var = expression  |  simple_expression
+17. return_stmt -> RETURN  ;  |  RETURN expression ;//非标准但可以判断
+18. expression -> var = expression ; | var = simple_expression ;
 19. var -> ID 
 20. simple_expression -> additive_expression relop additive_expression  |  additive_expression
 21. relop -> <=  | <  |  >  |  >=  |  ==  |  !=
