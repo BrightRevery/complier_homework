@@ -30,3 +30,22 @@
 *.exe
 *.out
 *.app
+
+# dubug
+*.exe
+*.ilk
+*.pdb
+*.log
+*.obj
+*.idb
+*.tlog
+*.lastbuildstate
+
+# project
+*.sln
+*.vcxproj
+*.filters
+*.ipch
+*.suo
+*.db
+*.opendb
