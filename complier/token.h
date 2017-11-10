@@ -1,8 +1,7 @@
 #pragma once
-
+using namespace std;
 
 enum token
-
 {
 	add,
 	minus,

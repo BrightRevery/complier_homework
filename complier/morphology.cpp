@@ -1,24 +1,28 @@
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
 #include <cstring>
-#include "token.h"
+
 #include "table.h"
+#include "token.h"
 
 using namespace std;
 
+//extern enum token;
+
+bool is_alpha(char c)
+{
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+}
+
+bool is_digit(char c)
+{
+	return (c >= '0' && c <= '9');
+}
+
 int morphology(ifstream& in, vector<token>& tokens, vector<int>& num_v, string_table& var_t)
-//{
-//	//in.get();
-//    return 0;
-//}
-//
-//
-//
-//
-//
-//int temp(ifstream in)
 {
 	token match_KT(char[]);
 	char c;
@@ -28,21 +32,24 @@ int morphology(ifstream& in, vector<token>& tokens, vector<int>& num_v, string_t
 	do
 	{
 		if (go_on)
-			in.get(c);
+		{
+			if (!in.get(c))
+				break;
+		}
 		else
 			go_on = 1;
 		switch (state)
 		{
 		case 0: if (c == ' ' || c == '\n' || c == '\t')
 			break;
-				else if (isalpha(c))
+				else if (is_alpha(c))
 				{
 					state = 1;
 					word[0] = c;
 					word_count = 1;
 					break;
 				}
-				else if (isdigit(c))
+				else if (is_digit(c))
 				{
 					state = 3;
 					word[0] = c;
@@ -159,7 +166,7 @@ int morphology(ifstream& in, vector<token>& tokens, vector<int>& num_v, string_t
 			state = 0;
 			go_on = 0;
 			break;
-		case 3: if (isdigit(c))
+		case 3: if (is_digit(c))
 		{
 			word[word_count++] = c;
 			break;
@@ -170,7 +177,7 @@ int morphology(ifstream& in, vector<token>& tokens, vector<int>& num_v, string_t
 					word[word_count++] = c;
 					break;
 				}
-		case 4: if (isdigit(c))
+		case 4: if (is_digit(c))
 		{
 			word[word_count++] = c;
 			break;
@@ -263,25 +270,19 @@ int morphology(ifstream& in, vector<token>& tokens, vector<int>& num_v, string_t
 					 break;
 				 }
 		}
-	} while (c != EOF);
+	} while (1);
 	return 0;
 }
 
-
-
-token match_KT(char* w)
+token match_KT(char w[])
 {
-	if (!strcmp(w, "int"))   return token::k_int;
-	if (!strcmp(w, "main"))  return token::k_main;
-	if (!strcmp(w, "void"))  return token::k_void;
-	if (!strcmp(w, "if"))    return token::k_if;
-	if (!strcmp(w, "else"))  return token::k_else;
-	if (!strcmp(w, "while")) return token::k_while;
-	if (!strcmp(w, "do"))    return token::k_do;
-	if (!strcmp(w, "return"))return token::k_return;
-	return token::var;
+	if (!strcmp(w, "int"))   return k_int;
+	if (!strcmp(w, "main"))  return k_main;
+	if (!strcmp(w, "void"))  return k_void;
+	if (!strcmp(w, "if"))    return k_if;
+	if (!strcmp(w, "else"))  return k_else;
+	if (!strcmp(w, "while")) return k_while;
+	if (!strcmp(w, "do"))    return k_do;
+	if (!strcmp(w, "return"))return k_return;
+	return var;
 }
-
-
-
-

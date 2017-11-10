@@ -1,3 +1,4 @@
+#pragma once
 #include "recursion.h"
 #include<string>
 using namespace std;

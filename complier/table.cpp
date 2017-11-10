@@ -1,3 +1,4 @@
+#pragma once
 #include "table.h"
 
 int string_table::look(string t)
