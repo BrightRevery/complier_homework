@@ -54,7 +54,7 @@ int jilu = 0;//用以记录第几个中间变量的生成
 string siyuanshi[100];//存取四元式字符串数组
 string temp1;
 string temp2;
-
+//
 class Stack
 {
 public:
