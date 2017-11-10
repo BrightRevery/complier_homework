@@ -10,12 +10,16 @@ enum token;
 class tokenstring
 {
 public:
+	tokenstring();
+	tokenstring(ifstream);
+
 	token cur();
-	int next(ifstream);
+	int next();
 	int add(token);
 
 
 
+private:
 	vector<token> tokens;
 	int index;
 

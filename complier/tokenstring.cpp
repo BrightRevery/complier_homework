@@ -1,16 +1,26 @@
 #include "tokenstring.h"
 
+tokenstring::tokenstring()
+{
+	index = 0;
+}
+
+tokenstring::tokenstring(ifstream in)
+{
+	char c;
+	int n;
+	in >> c >> n;
+	//这里查江哥的表
+	index = 0;
+}
+
 token tokenstring::cur()
 {
 	return tokens[index];
 }
 
-int tokenstring::next(ifstream in)
+int tokenstring::next()
 {
-	char c;
-	int n;
-	in >> c >> n;
-	//这里加上查江哥的表，确定token的值
 	index++;
 	return 0;
 }
