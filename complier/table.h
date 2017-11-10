@@ -1,16 +1,17 @@
 #pragma once
-#include<vector>
+#include <vector>
+#include <string>
 
+using namespace std;
 
-template <class T>
-class table
+class string_table
 {
 public:
-	int look(T);
-	T operator[](int);
+	int look(string);
+	string operator[](int);
 
 private:
-	vector<T> ts;
+	vector<string> ts;
 };
 
 

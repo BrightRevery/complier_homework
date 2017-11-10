@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int morphology(ifstream in, vector<token> tokens, vector<int> num_v, table<string> var_t)
+int morphology(ifstream& in, vector<token>& tokens, vector<int>& num_v, string_table& var_t)
 //{
 //	//in.get();
 //    return 0;
@@ -20,7 +20,6 @@ int morphology(ifstream in, vector<token> tokens, vector<int> num_v, table<strin
 //
 //int temp(ifstream in)
 {
-	vector<token> tokens;
 	token match_KT(char[]);
 	char c;
 	char word[32];

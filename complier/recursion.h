@@ -1,4 +1,9 @@
 #pragma once
+
+
+/*
+
+
 enum token;
 class tokenstring;
 
@@ -11,7 +16,7 @@ public:
 	int static declaration_list();
 	int static declaration();
 	int static var_declaration();
-	int static compound_stmt();
+	int static type_specifier();
 	int static fun_declaration();
 	int static params();
 	int static param_list();
@@ -41,3 +46,4 @@ private:
 	tokenstring ts;
 };
 
+*/

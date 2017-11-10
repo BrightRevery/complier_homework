@@ -1,5 +1,5 @@
 #include "tokenstring.h"
-
+/*
 tokenstring::tokenstring()
 {
 	index = 0;
@@ -30,3 +30,4 @@ int tokenstring::add(token t)
 	tokens.push_back(t);
 	return 0;
 }
+*/

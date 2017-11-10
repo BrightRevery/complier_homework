@@ -1,9 +1,9 @@
 #include "table.h"
 
-template<class T>
-int table<T>::look(T t)
+int string_table::look(string t)
 {
-	for (int i = 0; i < ts.size(); i++)
+	int i;
+	for (i = 0; i < ts.size(); i++)
 	{
 		if (ts[i] == t)
 			return i;
@@ -12,8 +12,7 @@ int table<T>::look(T t)
 	return i;
 }
 
-template<class T>
-T table<T>::operator[](int i)
+string string_table::operator[](int i)
 {
 	return ts[i];
 }

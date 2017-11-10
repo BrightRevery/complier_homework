@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <fstream>
-
+/*
 using namespace std;
 
 
@@ -25,3 +25,4 @@ private:
 
 	
 };
+*/

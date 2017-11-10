@@ -2,7 +2,7 @@
 #include<string>
 using namespace std;
 
-
+/*
 int recursion::program()
 {
 	declaration_list();
@@ -10,3 +10,4 @@ int recursion::program()
 }
 
 
+*/
