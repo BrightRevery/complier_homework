@@ -39,8 +39,12 @@ enum token
 	increase,//++
 	decrease,//--
 
+	//c的关键字，这里全部用k_开头
+	k_auto, k_double, k_int, k_struct, k_break, k_else, k_long, k_switch, k_case, k_enum, k_register, k_typedef,
+	k_char, k_extern, k_return, k_union, k_const, k_float, k_short, k_unsigned, k_continue, k_for, k_signed,
+	k_void, k_default, k_goto, k_sizeof, k_volatile, k_do, k_if, k_while, k_static
 
-			 //这是老王花了两个小时辛辛苦苦写出来的
+
 
 };
 

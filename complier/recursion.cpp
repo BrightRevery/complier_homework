@@ -71,7 +71,6 @@ bool Stack::isEmpty() const
 
 int recursion::program()
 {
-
 	declaration_list();
 	return 0;
 }
