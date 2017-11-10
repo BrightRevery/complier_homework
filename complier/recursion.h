@@ -1,6 +1,11 @@
 #pragma once
 enum token;
 
+struct Token {
+	char content[10];
+	int code;
+}token[100];//TOKEN序列数组，用来存放生成的token
+
 class recursion
 {
 public:
@@ -34,5 +39,5 @@ public:
 	int static args();
 	int static arg_list();
 
-	token t;
+	Token t;
 };
