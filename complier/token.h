@@ -1,7 +1,6 @@
 #pragma once
 
 
-
 enum token
 
 {
@@ -44,3 +43,5 @@ enum token
 			 //这是老王花了两个小时辛辛苦苦写出来的
 
 };
+
+
