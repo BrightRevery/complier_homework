@@ -1,22 +1,24 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
 #include <cstring>
 #include "token.h"
+#include "table.h"
 
 using namespace std;
 
-vector<token> morphology(ifstream in)
-{
-	//in.get();
-    return;
-}
-
-
-
-
-
-int temp(ifstream in)
+int morphology(ifstream in, vector<token> tokens, vector<int> num_v, table<string> var_t)
+//{
+//	//in.get();
+//    return 0;
+//}
+//
+//
+//
+//
+//
+//int temp(ifstream in)
 {
 	vector<token> tokens;
 	token match_KT(char[]);
@@ -153,7 +155,7 @@ int temp(ifstream in)
 			tokens.push_back(match_KT(word));
 			if (match_KT(word) == token::var)
 			{
-				//这里列个表，查表后再push
+				tokens.push_back((token)var_t.look(word));
 			}
 			state = 0;
 			go_on = 0;
@@ -181,8 +183,10 @@ int temp(ifstream in)
 					go_on = 0;
 					break;
 				}
-		case 5: printf("<%s,3>\n", word);
-			fprintf(fo, "3 %s\n", word);
+		case 5: 
+			tokens.push_back(token::number);
+			tokens.push_back((token)num_v.size());
+			num_v.push_back(atoi(word));
 			state = 0;
 			go_on = 0;
 			break;
@@ -199,8 +203,8 @@ int temp(ifstream in)
 					go_on = 0;
 					break;
 				}
-		case 7: printf("<%s,1>\n", word);
-			fprintf(fo, "1\n");
+		case 7: 
+			tokens.push_back(token::ch);
 			state = 0;
 			break;
 		case 8: if (c != '\"')
@@ -216,61 +220,51 @@ int temp(ifstream in)
 					go_on = 0;
 					break;
 				}
-		case 9: printf("<%s,2>\n", word);
-			fprintf(fo, "2\n");
+		case 9: 
+			tokens.push_back(token::str);
 			state = 0;
 			break;
 		case 10: if (c == '=')
 		{
-			printf("<>=,10>\n");
-			fprintf(fo, "10\n");
+			tokens.push_back(token::greatereq);
 			state = 0;
 			break;
 		}
 				 else
 				 {
-					 printf("<>=,14>\n");
-					 fprintf(fo, "14\n");
+					 tokens.push_back(token::greater);
 					 state = 0;
 					 go_on = 0;
 					 break;
 				 }
 		case 11: if (c == '=')
 		{
-			printf("<<=,11>\n");
-			fprintf(fo, "11\n");
+			tokens.push_back(token::lesseq);
 			state = 0;
 			break;
 		}
 				 else
 				 {
-					 printf("<<=,15>\n");
-					 fprintf(fo, "15\n");
+					 tokens.push_back(token::less);
 					 state = 0;
 					 go_on = 0;
 					 break;
 				 }
 		case 12: if (c == '=')
 		{
-			printf("<==,12>\n");
-			fprintf(fo, "12\n");
+			tokens.push_back(token::equal);
 			state = 0;
 			break;
 		}
 				 else
 				 {
-					 printf("<=,13>\n");
-					 fprintf(fo, "13\n");
+					 tokens.push_back(token::assign);
 					 state = 0;
 					 go_on = 0;
 					 break;
 				 }
 		}
 	} while (c != EOF);
-	fclose(ft);
-	fclose(fo);
-	puts("词法分析完成\n");
-	system("pause");
 	return 0;
 }
 

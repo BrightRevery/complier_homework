@@ -47,9 +47,11 @@ enum token
 
 
 
-	number,
-	var,
-	id
+	number,//Êı×Ö
+	var,//±äÁ¿
+	
+	ch,//×Ö·û
+	str//×Ö·û´®
 
 };
 
