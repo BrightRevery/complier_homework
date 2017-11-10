@@ -16,7 +16,7 @@ enum token
 	lesseq,//小于等于
 	dot,//点
 	bit_not,//~ 按位非 
-	not,//! 非
+	lg_not,//! 非
 	extra,//取余
 	left_bracket,//左括号
 	right_bracket,//右括号
@@ -26,10 +26,10 @@ enum token
 	right_sqbracket,//右方括号
 	bit_and,//位与&
 	bit_or ,//位或|
-	and,//与&&
-	or ,//或||
+	lg_and,//与&&
+	lg_or ,//或||
 	comma,//逗号
-	semicolon,//分号;
+	semicolon,//分号
 	colon,//冒号:
 	sharp,//尖号^
 	hashtag,//井号
