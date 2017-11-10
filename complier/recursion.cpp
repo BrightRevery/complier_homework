@@ -87,4 +87,7 @@ int recursion::declaration_list()
 		return 0;
 }
 
-int recursion::
+int recursion::declaration()
+{
+
+}
