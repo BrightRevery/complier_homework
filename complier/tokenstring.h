@@ -1,5 +1,8 @@
 #pragma once
 #include <vector>
+#include <fstream>
+
+using namespace std;
 
 
 enum token;
@@ -8,11 +11,13 @@ class tokenstring
 {
 public:
 	token cur();
-	int next();
+	int next(ifstream);
 	int add(token);
 
 
 
-	std::vector<token> tokens;
+	vector<token> tokens;
 	int index;
+
+	
 };
