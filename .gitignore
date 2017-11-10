@@ -50,3 +50,7 @@
 *.opensdf
 .suo
 Browse.VC.db
+
+# target
+target.txt
+4e.txt
