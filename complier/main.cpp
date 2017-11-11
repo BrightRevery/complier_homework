@@ -21,7 +21,6 @@ int main()
 
 	morphology(file_in, tokens, num_v, var_t);
 
-
 	system("pause");
 
 	return 0;

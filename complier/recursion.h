@@ -1,7 +1,8 @@
 #pragma once
+#include <vector>
 
 
-/*
+
 
 
 enum token;
@@ -43,7 +44,6 @@ public:
 	int static arg_list();
 
 private:
-	tokenstring ts;
+	vector<token> t;
 };
 
-*/
