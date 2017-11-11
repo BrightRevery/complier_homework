@@ -12,6 +12,8 @@ using namespace std;
 
 class recursion
 {
+	recursion();
+	~recursion();
 public:
 	int static program();
 	int static declaration_list();
@@ -47,3 +49,7 @@ private:
 	vector<token> t;
 };
 
+int recursion::program()
+{
+
+}
