@@ -1,8 +1,5 @@
 #pragma once
-
-
-/*
-
+#include <vector>
 
 enum token;
 class tokenstring;
@@ -12,38 +9,45 @@ using namespace std;
 class recursion
 {
 public:
-	int static program();
-	int static declaration_list();
-	int static declaration();
-	int static var_declaration();
-	int static type_specifier();
-	int static fun_declaration();
-	int static params();
-	int static param_list();
-	int static param();
-	int static compound_stmt();
-	int static local_declarations();
-	int static statement_list();
-	int static statement();
-	int static expression_stmt();
-	int static selection_stmt();
-	int static iteration_stmt();
-	int static return_stmt();
-	int static expression();
-	int static var();
-	int static simple_expression();
-	int static relop();
-	int static additive_expression();
-	int static addop();
-	int static term();
-	int static mulop();
-	int static factor();
-	int static call();
-	int static args();
-	int static arg_list();
+	recursion();
+	recursion(const vector<token>&);
+
+
+
+	int program();
+	int declaration_list();
+	int declaration();
+	int var_declaration();
+	int type_specifier();
+	int fun_declaration();
+	int params();
+	int param_list();
+	int param();
+	int compound_stmt();
+	int local_declarations();
+	int statement_list();
+	int statement();
+	int expression_stmt();
+	int selection_stmt();
+	int iteration_stmt();
+	int return_stmt();
+	int expression();
+	int var();
+	int simple_expression();
+	int relop();
+	int additive_expression();
+	int addop();
+	int term();
+	int mulop();
+	int factor();
+	int call();
+	int args();
+	int arg_list();
+
 
 private:
-	tokenstring ts;
+	vector<token>& t = vector<token>();
+
+	
 };
 
-*/

@@ -3,7 +3,15 @@
 #include<string>
 using namespace std;
 
-/*
+
+recursion::recursion()
+{}
+
+recursion::recursion(const vector<token>& tokens)
+{
+	t = tokens;
+}
+
 int recursion::program()
 {
 	declaration_list();
@@ -11,4 +19,3 @@ int recursion::program()
 }
 
 
-*/
