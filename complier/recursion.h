@@ -1,7 +1,8 @@
 #pragma once
 #include <vector>
+#include "e4.h"
+#include "token.h"
 
-enum token;
 class tokenstring;
 
 using namespace std;
@@ -47,7 +48,10 @@ public:
 
 private:
 	vector<token>& t = vector<token>();
+	vector<int> sem = vector<int>();
+	vector<e4> qt = vector<e4>();
 
+	int i = 0;
 	
 };
 

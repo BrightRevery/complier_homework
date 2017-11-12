@@ -4,6 +4,7 @@
 #include <vector>
 #include "table.h"
 #include "token.h"
+#include "recursion.h"
 
 using namespace std;
 
@@ -20,7 +21,9 @@ int main()
 	ofstream file_out("4e.txt");
 
 	morphology(file_in, tokens, num_v, var_t);
-
+	 
+	recursion r(tokens);
+	r.program();
 
 	system("pause");
 

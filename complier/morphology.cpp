@@ -273,7 +273,9 @@ int morphology(ifstream& in, vector<token>& tokens, vector<int>& num_v, string_t
 }
 
 token match_KT(char w[])
+
 {
+
 	if (!strcmp(w, "int"))   return k_int;
 	if (!strcmp(w, "main"))  return k_main;
 	if (!strcmp(w, "void"))  return k_void;
@@ -282,5 +284,32 @@ token match_KT(char w[])
 	if (!strcmp(w, "while")) return k_while;
 	if (!strcmp(w, "do"))    return k_do;
 	if (!strcmp(w, "return"))return k_return;
+	if (!strcmp(w, "auto"))  return k_auto;
+	if (!strcmp(w, "double"))return k_double;
+	if (!strcmp(w, "struct"))return k_struct;
+	if (!strcmp(w, "break")) return k_break;
+	if (!strcmp(w, "else"))  return k_else;
+	if (!strcmp(w, "long"))  return k_long;
+	if (!strcmp(w, "switch"))return k_switch;
+	if (!strcmp(w, "case"))  return k_case;
+	if (!strcmp(w, "enum"))  return k_enum;
+	if (!strcmp(w, "register"))return k_register;
+	if (!strcmp(w, "typedef"))return k_typedef;
+	if (!strcmp(w, "char"))  return k_char;
+	if (!strcmp(w, "extern"))return k_extern;
+	if (!strcmp(w, "union")) return k_union;
+	if (!strcmp(w, "const")) return k_const;
+	if (!strcmp(w, "float")) return k_float;
+	if (!strcmp(w, "short")) return k_short;
+	if (!strcmp(w, "unsigned"))return k_unsigned;
+	if (!strcmp(w, "continue"))return k_continue;
+	if (!strcmp(w, "for"))   return k_for;
+	if (!strcmp(w, "signed"))return k_signed;
+	if (!strcmp(w, "default"))return k_default;
+	if (!strcmp(w, "goto"))  return k_goto;
+	if (!strcmp(w, "sizeof"))return k_sizeof;
+	if (!strcmp(w, "volatile"))return k_volatile;
+	if (!strcmp(w, "static"))return k_static;
 	return var;
 }
+

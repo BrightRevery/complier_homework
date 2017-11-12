@@ -3,6 +3,9 @@ using namespace std;
 
 enum token
 {
+	end,//结束标识
+
+
 	add,
 	minus,
 	multiply,
@@ -50,7 +53,8 @@ enum token
 	var,//变量
 	
 	ch,//字符
-	str//字符串
+	str,//字符串
+
 
 };
 
