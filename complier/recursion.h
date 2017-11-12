@@ -1,19 +1,19 @@
 #pragma once
 #include <vector>
-#include "e4.h"
 #include "token.h"
+#include "e4.h"
 
-class tokenstring;
 
 using namespace std;
+
 
 class recursion
 {
 public:
-	recursion();
+	//recursion();
 	recursion(const vector<token>&);
 
-	int start();//递归下降的入口
+	int run();//递归下降的入口
 
 private:
 
@@ -59,5 +59,7 @@ private:
 	int i = 0;//当前标识符位置
 	int t_c = 0;//临时变量计数
 	
+
+	bool main_used = false;//保证main只出现一次
 };
 

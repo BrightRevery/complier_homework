@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include "table.h"
-#include "token.h"
 #include "recursion.h"
 
 using namespace std;
@@ -23,7 +22,7 @@ int main()
 	morphology(file_in, tokens, num_v, var_t);
 	 
 	recursion r(tokens);
-	r.start();
+	r.run();
 
 	system("pause");
 

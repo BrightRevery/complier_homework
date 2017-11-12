@@ -3,15 +3,13 @@
 #include "recursion.h"
 using namespace std;
 
-recursion::recursion()
-{}
 
 recursion::recursion(const vector<token>& tokens)
 {
 	t = tokens;
 }
 
-int recursion::start()
+int recursion::run()
 {
 	program();
 	return 0;
@@ -37,11 +35,17 @@ int recursion::declaration_list()
 
 int recursion::declaration()
 {
+	bool using_main = false;
 	type_specifier();
 	if (t[i] == var)
 	{
 		//sem.push_back(t[i + 1]);
 		i += 2;
+	}
+	else if (t[i] == k_main && !main_used)
+	{
+		using_main = true;
+		i += 1;
 	}
 	else
 	{
@@ -52,6 +56,11 @@ int recursion::declaration()
 
 	if (t[i] == token::semicolon)
 	{
+		if (using_main)
+		{
+			cout << "“main”不能作为变量名" << endl;
+			exit(1);
+		}
 		var_declaration();
 	}
 	else
@@ -204,6 +213,7 @@ int recursion::compound_stmt()
 		cout << "花括号不匹配" << endl;
 		exit(1);
 	}
+	return 0;
 }
 
 int recursion::local_declarations()
