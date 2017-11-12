@@ -13,6 +13,9 @@ public:
 	recursion();
 	recursion(const vector<token>&);
 
+	int start();//递归下降的入口
+
+private:
 
 
 	int program();
@@ -33,25 +36,28 @@ public:
 	int iteration_stmt();
 	int return_stmt();
 	int expression();
-	int var();
+	int left_var();
 	int simple_expression();
-	int relop();
 	int additive_expression();
-	int addop();
 	int term();
-	int mulop();
 	int factor();
-	int call();
-	int args();
-	int arg_list();
+	//int call();
+	//int args();
+	//int arg_list();
 
 
-private:
-	vector<token>& t = vector<token>();
-	vector<int> sem = vector<int>();
-	vector<e4> qt = vector<e4>();
+	int red_expression();
+	int reduction();
 
-	int i = 0;
+
+
+
+	vector<token>& t = vector<token>();//标识符序列
+	vector<vx> sem = vector<vx>();//语义栈
+	vector<e4> qt = vector<e4>();//四元式存储
+
+	int i = 0;//当前标识符位置
+	int t_c = 0;//临时变量计数
 	
 };
 

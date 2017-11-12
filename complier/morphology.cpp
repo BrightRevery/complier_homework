@@ -38,124 +38,131 @@ int morphology(ifstream& in, vector<token>& tokens, vector<int>& num_v, string_t
 			go_on = 1;
 		switch (state)
 		{
-		case 0: if (c == ' ' || c == '\n' || c == '\t')
-			break;
-				else if (is_alpha(c))
-				{
-					state = 1;
-					word[0] = c;
-					word_count = 1;
-					break;
-				}
-				else if (is_digit(c))
-				{
-					state = 3;
-					word[0] = c;
-					word_count = 1;
-					break;
-				}
-				else if (c == '\'')
-				{
-					state = 6;
-					word[0] = c;
-					word_count = 1;
-					break;
-				}
-				else if (c == '\"')
-				{
-					state = 8;
-					word[0] = c;
-					word_count = 1;
-					break;
-				}
-				else if (c == '>')
-				{
-					state = 10;
-					break;
-				}
-				else if (c == '<')
-				{
-					state = 11;
-					break;
-				}
-				else if (c == '=')
-				{
-					state = 12;
-					break;
-				}
-				else if (c == '+')
-				{
-					tokens.push_back(token::add);
-					break;
-				}
-				else if (c == '-')
-				{
-					tokens.push_back(token::minus);
-					break;
-				}
-				else if (c == '*')
-				{
-					tokens.push_back(token::multiply);
-					break;
-				}
-				else if (c == '/')
-				{
-					tokens.push_back(token::divide);
-					break;
-				}
-				else if (c == '{')
-				{
-					tokens.push_back(token::left_curlybrace);
-					break;
-				}
-				else if (c == '}')
-				{
-					tokens.push_back(token::right_curlybrace);
-					break;
-				}
-				else if (c == ',')
-				{
-					tokens.push_back(token::comma);
-					break;
-				}
-				else if (c == ';')
-				{
-					tokens.push_back(token::semicolon);
-					break;
-				}
-				else if (c == '(')
-				{
-					tokens.push_back(token::left_bracket);
-					break;
-				}
-				else if (c == ')')
-				{
-					tokens.push_back(token::right_bracket);
-					break;
-				}
-				else if (c == '[')
-				{
-					tokens.push_back(token::left_sqbracket);
-					break;
-				}
-				else if (c == ']')
-				{
-					tokens.push_back(token::right_sqbracket);
-					break;
-				}
-		case 1: if (isalnum(c))
-		{
-			word[word_count++] = c;
-			break;
-		}
-				else
-				{
-					word[word_count++] = '\0';
-					state = 2;
-					go_on = 0;
-					break;
-				}
-		case 2: 
+		case 0:
+			if (c == ' ' || c == '\n' || c == '\t')
+				break;
+			else if (is_alpha(c))
+			{
+				state = 1;
+				word[0] = c;
+				word_count = 1;
+				break;
+			}
+			else if (is_digit(c))
+			{
+				state = 3;
+				word[0] = c;
+				word_count = 1;
+				break;
+			}
+			else if (c == '\'')
+			{
+				state = 6;
+				word[0] = c;
+				word_count = 1;
+				break;
+			}
+			else if (c == '\"')
+			{
+				state = 8;
+				word[0] = c;
+				word_count = 1;
+				break;
+			}
+			else if (c == '>')
+			{
+				state = 10;
+				break;
+			}
+			else if (c == '<')
+			{
+				state = 11;
+				break;
+			}
+			else if (c == '=')
+			{
+				state = 12;
+				break;
+			}
+			else if (c == '!')
+			{
+				state = 13;
+				break;
+			}
+			else if (c == '+')
+			{
+				tokens.push_back(token::add);
+				break;
+			}
+			else if (c == '-')
+			{
+				tokens.push_back(token::minus);
+				break;
+			}
+			else if (c == '*')
+			{
+				tokens.push_back(token::multiply);
+				break;
+			}
+			else if (c == '/')
+			{
+				tokens.push_back(token::divide);
+				break;
+			}
+			else if (c == '{')
+			{
+				tokens.push_back(token::left_curlybrace);
+				break;
+			}
+			else if (c == '}')
+			{
+				tokens.push_back(token::right_curlybrace);
+				break;
+			}
+			else if (c == ',')
+			{
+				tokens.push_back(token::comma);
+				break;
+			}
+			else if (c == ';')
+			{
+				tokens.push_back(token::semicolon);
+				break;
+			}
+			else if (c == '(')
+			{
+				tokens.push_back(token::left_bracket);
+				break;
+			}
+			else if (c == ')')
+			{
+				tokens.push_back(token::right_bracket);
+				break;
+			}
+			else if (c == '[')
+			{
+				tokens.push_back(token::left_sqbracket);
+				break;
+			}
+			else if (c == ']')
+			{
+				tokens.push_back(token::right_sqbracket);
+				break;
+			}
+		case 1:
+			if (isalnum(c))
+			{
+				word[word_count++] = c;
+				break;
+			}
+			else
+			{
+				word[word_count++] = '\0';
+				state = 2;
+				go_on = 0;
+				break;
+			}
+		case 2:
 			tokens.push_back(match_KT(word));
 			if (match_KT(word) == token::var)
 			{
@@ -164,110 +171,133 @@ int morphology(ifstream& in, vector<token>& tokens, vector<int>& num_v, string_t
 			state = 0;
 			go_on = 0;
 			break;
-		case 3: if (is_digit(c))
-		{
-			word[word_count++] = c;
-			break;
-		}
-				else if (c == '.')
-				{
-					state = 4;
-					word[word_count++] = c;
-					break;
-				}
-		case 4: if (is_digit(c))
-		{
-			word[word_count++] = c;
-			break;
-		}
-				else
-				{
-					word[word_count++] = '\0';
-					state = 5;
-					go_on = 0;
-					break;
-				}
-		case 5: 
-			tokens.push_back(token::number);
+		case 3:
+			if (is_digit(c))
+			{
+				word[word_count++] = c;
+				break;
+			}
+			else if (c == '.')
+			{
+				state = 4;
+				word[word_count++] = c;
+				break;
+			}
+		case 4:
+			if (is_digit(c))
+			{
+				word[word_count++] = c;
+				break;
+			}
+			else
+			{
+				word[word_count++] = '\0';
+				state = 5;
+				go_on = 0;
+				break;
+			}
+		case 5:
+			tokens.push_back(token::num);
 			tokens.push_back((token)num_v.size());
 			num_v.push_back(atoi(word));
 			state = 0;
 			go_on = 0;
 			break;
-		case 6: if (c != '\'')
-		{
-			word[word_count++] = c;
-			break;
-		}
-				else
-				{
-					word[word_count++] = c;
-					word[word_count++] = '\0';
-					state = 7;
-					go_on = 0;
-					break;
-				}
-		case 7: 
+		case 6:
+			if (c != '\'')
+			{
+				word[word_count++] = c;
+				break;
+			}
+			else
+			{
+				word[word_count++] = c;
+				word[word_count++] = '\0';
+				state = 7;
+				go_on = 0;
+				break;
+			}
+		case 7:
 			tokens.push_back(token::ch);
 			state = 0;
 			break;
-		case 8: if (c != '\"')
-		{
-			word[word_count++] = c;
-			break;
-		}
-				else
-				{
-					word[word_count++] = c;
-					word[word_count++] = '\0';
-					state = 9;
-					go_on = 0;
-					break;
-				}
-		case 9: 
+		case 8:
+			if (c != '\"')
+			{
+				word[word_count++] = c;
+				break;
+			}
+			else
+			{
+				word[word_count++] = c;
+				word[word_count++] = '\0';
+				state = 9;
+				go_on = 0;
+				break;
+			}
+		case 9:
 			tokens.push_back(token::str);
 			state = 0;
 			break;
-		case 10: if (c == '=')
-		{
-			tokens.push_back(token::greatereq);
-			state = 0;
-			break;
-		}
-				 else
-				 {
-					 tokens.push_back(token::greater);
-					 state = 0;
-					 go_on = 0;
-					 break;
-				 }
-		case 11: if (c == '=')
-		{
-			tokens.push_back(token::lesseq);
-			state = 0;
-			break;
-		}
-				 else
-				 {
-					 tokens.push_back(token::less);
-					 state = 0;
-					 go_on = 0;
-					 break;
-				 }
-		case 12: if (c == '=')
-		{
-			tokens.push_back(token::equal);
-			state = 0;
-			break;
-		}
-				 else
-				 {
-					 tokens.push_back(token::assign);
-					 state = 0;
-					 go_on = 0;
-					 break;
-				 }
-		}
+		case 10:
+			if (c == '=')
+			{
+				tokens.push_back(token::greatereq);
+				state = 0;
+				break;
+			}
+			else
+			{
+				tokens.push_back(token::greater);
+				state = 0;
+				go_on = 0;
+				break;
+			}
+		case 11:
+			if (c == '=')
+			{
+				tokens.push_back(token::lesseq);
+				state = 0;
+				break;
+			}
+			else
+			{
+				tokens.push_back(token::less);
+				state = 0;
+				go_on = 0;
+				break;
+			}
+		case 12:
+			if (c == '=')
+			{
+				tokens.push_back(token::equal);
+				state = 0;
+				break;
+			}
+			else
+			{
+				tokens.push_back(token::assign);
+				state = 0;
+				go_on = 0;
+				break;
+			}
+		case 13:
+			if (c == '=')
+			{
+				tokens.push_back(token::n_equal);
+				state = 0;
+				break;
+			}
+			else
+			{
+				tokens.push_back(token::lg_not);
+				state = 0;
+				go_on = 0;
+				break;
+			}
+		
+	}
+
 	} while (1);
 	return 0;
 }

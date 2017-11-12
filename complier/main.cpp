@@ -23,7 +23,7 @@ int main()
 	morphology(file_in, tokens, num_v, var_t);
 	 
 	recursion r(tokens);
-	r.program();
+	r.start();
 
 	system("pause");
 

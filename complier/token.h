@@ -38,7 +38,7 @@ enum token
 	d_quote,//双引号
 	quote,//单引号
 	backslash,//反斜杠
-	no_equal,//不等于
+	n_equal,//不等于
 	increase,//++
 	decrease,//--
 
@@ -49,7 +49,7 @@ enum token
 
 
 
-	number,//数字
+	num,//数字
 	var,//变量
 	
 	ch,//字符
