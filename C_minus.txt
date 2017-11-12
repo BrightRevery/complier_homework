@@ -34,10 +34,10 @@ C-Minus 的 BNF 语法如下：
 21. relop -> <=  | <  |  >  |  >=  |  ==  |  != //这些都和上面整合在一起，就不单独作为函数了
 22. additive_expression -> term addop additive_expression  |  term
 23. addop -> +  |  - //这些都和上面整合在一起，就不单独作为函数了
-24. term -> term mulop factor  |  factor
+24. term -> factor mulop term  |  factor
 25. mulop -> *  |  / //这些都和上面整合在一起，就不单独作为函数了
 26. factor -> ( expression )  |  left_var  |  call  |  NUM
-27. call -> ID ( args ) //看了半天才看懂，这是函数调用
+27. call -> ID ( args ) //看了半天才看懂，这是函数调用//这个我暂时没做
 28. args -> arg_list  |  empty
 29. arg_list ->  expression , arg_list |  empty
 
