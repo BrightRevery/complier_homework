@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 extern int morphology(ifstream&, vector<token>&, vector<int>&, string_table&);
 
 int main()
