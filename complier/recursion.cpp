@@ -42,12 +42,12 @@ int recursion::declaration()
 {
 	bool using_main = false;
 	type_specifier();
-	if (t[i] == var)
+	if (t[i] == token::var)
 	{
 		//sem.push_back(t[i + 1]);
 		i += 2;
 	}
-	else if (t[i] == k_main && !main_used)
+	else if (t[i] == token::k_main && !main_used)
 	{
 		using_main = true;
 		i += 1;
@@ -106,7 +106,7 @@ int recursion::type_specifier()
 
 int recursion::fun_declaration()
 {
-	if (t[i] == left_bracket)
+	if (t[i] == token::left_bracket)
 	{
 		i++;
 	}
@@ -118,7 +118,7 @@ int recursion::fun_declaration()
 
 	params();
 
-	if (t[i] == right_bracket)
+	if (t[i] == token::right_bracket)
 	{
 		i++;
 	}
@@ -135,7 +135,7 @@ int recursion::fun_declaration()
 
 int recursion::params()
 {
-	if (t[i] == k_void)
+	if (t[i] == token::k_void)
 	{
 		i++;
 	}
@@ -148,7 +148,7 @@ int recursion::params()
 
 int recursion::param_list()
 {
-	if (t[i] == num)
+	if (t[i] == token::num)
 	{
 		i++;
 		param();
@@ -177,7 +177,7 @@ int recursion::param_list()
 int recursion::param()
 {
 	type_specifier();
-	if (t[i] == var)
+	if (t[i] == token::var)
 	{
 		//sem.push_back(t[i + 1]);
 		i += 2;
@@ -195,7 +195,7 @@ int recursion::param()
 
 int recursion::compound_stmt()
 {
-	if (t[i] == left_curlybrace)
+	if (t[i] == token::left_curlybrace)
 	{
 		i++;
 	}
@@ -209,7 +209,7 @@ int recursion::compound_stmt()
 
 	statement_list();
 
-	if (t[i] == right_curlybrace)
+	if (t[i] == token::right_curlybrace)
 	{
 		i++;
 	}
@@ -223,8 +223,20 @@ int recursion::compound_stmt()
 
 int recursion::local_declarations()
 {
-	if (t[i] == k_int || t[i] == k_void)
+	if (t[i] == token::k_int || t[i] == token::k_void)
 	{
+		type_specifier();
+
+		if (t[i] == token::var)
+		{
+			i += 2;
+		}
+		else
+		{
+			cout << "变量类型后面应接变量名" << endl;
+			exit(1);
+		}
+
 		var_declaration();
 		local_declarations();
 	}
@@ -237,7 +249,7 @@ int recursion::local_declarations()
 
 int recursion::statement_list()
 {
-	if (t[i] == right_curlybrace)
+	if (t[i] == token::right_curlybrace)
 	{
 		return 0;
 	}
@@ -251,23 +263,23 @@ int recursion::statement_list()
 
 int recursion::statement()
 {
-	if (t[i] == left_curlybrace)
+	if (t[i] == token::left_curlybrace)
 	{
 		compound_stmt();
 	}
-	else if (t[i] == k_if)
+	else if (t[i] == token::k_if)
 	{
 		selection_stmt();
 	}
-	else if (t[i] == k_while)
+	else if (t[i] == token::k_while)
 	{
 		iteration_stmt();
 	}
-	else if (t[i] == k_return)
+	else if (t[i] == token::k_return)
 	{
 		return_stmt();
 	}
-	else if (t[i] == var)
+	else if (t[i] == token::var)
 	{
 		expression_stmt();
 	}
@@ -284,7 +296,7 @@ int recursion::expression_stmt()
 {
 	expression();
 
-	if (t[i] == semicolon)
+	if (t[i] == token::semicolon)
 	{
 		i++;
 	}
@@ -300,7 +312,7 @@ int recursion::expression_stmt()
 
 int recursion::selection_stmt()
 {
-	if (t[i] == k_if)
+	if (t[i] == token::k_if)
 	{
 		i++;
 	}
@@ -310,7 +322,7 @@ int recursion::selection_stmt()
 		exit(2);
 	}
 
-	if (t[i] == left_bracket)
+	if (t[i] == token::left_bracket)
 	{
 		i++;
 	}
@@ -322,7 +334,7 @@ int recursion::selection_stmt()
 
 	expression();
 
-	if (t[i] == right_bracket)
+	if (t[i] == token::right_bracket)
 	{
 		i++;
 	}
@@ -334,7 +346,7 @@ int recursion::selection_stmt()
 
 	statement();
 
-	if (t[i] == k_else)
+	if (t[i] == token::k_else)
 	{
 		i++;
 
@@ -349,7 +361,7 @@ int recursion::selection_stmt()
 
 int recursion::iteration_stmt()
 {
-	if (t[i] == k_while)
+	if (t[i] == token::k_while)
 	{
 		i++;
 	}
@@ -359,7 +371,7 @@ int recursion::iteration_stmt()
 		exit(2);
 	}
 
-	if (t[i] == left_bracket)
+	if (t[i] == token::left_bracket)
 	{
 		i++;
 	}
@@ -371,7 +383,7 @@ int recursion::iteration_stmt()
 
 	expression();
 
-	if (t[i] == right_bracket)
+	if (t[i] == token::right_bracket)
 	{
 		i++;
 	}
@@ -388,7 +400,7 @@ int recursion::iteration_stmt()
 
 int recursion::return_stmt()
 {
-	if (t[i] == k_return)
+	if (t[i] == token::k_return)
 	{
 		i++;
 	}
@@ -398,7 +410,7 @@ int recursion::return_stmt()
 		exit(2);
 	}
 
-	if (t[i] == semicolon)
+	if (t[i] == token::semicolon)
 	{
 		i++;
 		return 0;
@@ -407,7 +419,7 @@ int recursion::return_stmt()
 	{
 		simple_expression();
 
-		if (t[i] == semicolon)
+		if (t[i] == token::semicolon)
 		{
 			i++;
 			return 0;
@@ -422,7 +434,7 @@ int recursion::expression()
 {
 	left_var();
 
-	if (t[i] == assign)
+	if (t[i] == token::assign)
 	{
 		i++;
 	}
@@ -441,7 +453,7 @@ int recursion::expression()
 
 int recursion::left_var()
 {
-	if (t[i] == var)
+	if (t[i] == token::var)
 	{
 		sem.push_back(vx(variable, t[i + 1]));
 		i += 2;
@@ -458,7 +470,7 @@ int recursion::simple_expression()
 {
 	additive_expression();
 
-	if (t[i] == lesseq || t[i] == token::less || t[i] == greatereq || t[i] == greater || t[i] == token::equal || t[i] == n_equal)
+	if (t[i] == token::lesseq || t[i] == token::less || t[i] == token::greatereq || t[i] == token::greater || t[i] == token::equal || t[i] == token::n_equal)
 	{
 		sem.push_back(vx(op, t[i]));
 		i++;
@@ -480,7 +492,7 @@ int recursion::additive_expression()
 {
 	term();
 
-	if (t[i] == add || t[i] == token::minus)
+	if (t[i] == token::add || t[i] == token::minus)
 	{
 		sem.push_back(vx(op, t[i]));
 		i++;
@@ -501,7 +513,7 @@ int recursion::term()
 {
 	factor();
 
-	if (t[i] == multiply || t[i] == divide)
+	if (t[i] == token::multiply || t[i] == token::divide)
 	{
 		sem.push_back(vx(op, t[i]));
 		i++;
@@ -519,11 +531,11 @@ int recursion::term()
 
 int recursion::factor()
 {
-	if (t[i] == left_bracket)
+	if (t[i] == token::left_bracket)
 	{
 		i++;
 		expression();
-		if (t[i] == right_bracket)
+		if (t[i] == token::right_bracket)
 		{
 			return 0;
 		}
@@ -533,13 +545,13 @@ int recursion::factor()
 			exit(1);
 		}
 	}
-	else if (t[i] == var)
+	else if (t[i] == token::var)
 	{
 		sem.push_back(vx(variable, t[i + 1]));
 		i += 2;
 		return 0;
 	}
-	else if (t[i] == num)
+	else if (t[i] == token::num)
 	{
 		sem.push_back(vx(number, t[i + 1]));
 		i += 2;

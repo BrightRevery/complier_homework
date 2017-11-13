@@ -1,6 +1,6 @@
 #pragma once
 
-extern enum token;
+#include "token.h"
 
 enum type
 {

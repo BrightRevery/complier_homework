@@ -1,12 +1,13 @@
 #pragma once
 #include <vector>
+#include "e4.h"
 
 
 using namespace std;
 
-extern enum token;
-extern struct vx;
-extern struct e4;
+//extern enum token;
+//extern struct vx;
+//extern struct e4;
 
 class recursion
 {
