@@ -1,11 +1,12 @@
 #pragma once
 #include <vector>
-#include "token.h"
-#include "e4.h"
 
 
 using namespace std;
 
+extern enum token;
+extern struct vx;
+extern struct e4;
 
 class recursion
 {
@@ -14,6 +15,7 @@ public:
 	recursion(const vector<token>&);
 
 	int run();//递归下降的入口
+	vector<e4>& result();
 
 private:
 

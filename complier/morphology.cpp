@@ -1,10 +1,7 @@
 #pragma once
-#include <iostream>
 #include <fstream>
 #include <vector>
-#include <string>
 #include <cstring>
-
 #include "table.h"
 #include "token.h"
 
@@ -32,7 +29,10 @@ int morphology(ifstream& in, vector<token>& tokens, vector<int>& num_v, string_t
 		if (go_on)
 		{
 			if (!in.get(c))
+			{
+				tokens.push_back(token::end);
 				break;
+			}
 		}
 		else
 			go_on = 1;

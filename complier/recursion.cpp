@@ -15,6 +15,11 @@ int recursion::run()
 	return 0;
 }
 
+vector<e4>& recursion::result()
+{
+	return qt;
+}
+
 int recursion::program()
 {
 	declaration_list();
@@ -400,7 +405,7 @@ int recursion::return_stmt()
 	}
 	else
 	{
-		expression();
+		simple_expression();
 
 		if (t[i] == semicolon)
 		{

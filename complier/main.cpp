@@ -1,14 +1,14 @@
-#include <iostream>
 #include <fstream>
-#include <string>
 #include <vector>
+#include "token.h"
+#include "e4.h"
 #include "table.h"
 #include "recursion.h"
 
 using namespace std;
 
 
-int morphology(ifstream&, vector<token>&, vector<int>&, string_table&);
+extern int morphology(ifstream&, vector<token>&, vector<int>&, string_table&);
 
 int main()
 {
